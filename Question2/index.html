@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hello NodeJS Page</title>
+</head>
+<body>
+  <h1>Hello NodeJS Page</h1>
+  <button id="getHelloButton">GetHello</button>
+  <p id="response"></p>
+
+  <script>
+    document.getElementById('getHelloButton').addEventListener('click', function () {
+      fetch('/gethello') // Fetch data from the /gethello route
+        .then(response => response.text()) // Parse the response as text
+        .then(data => {
+          // Display the response in the 'response' paragraph
+          document.getElementById('response').innerText = data;
+        })
+        .catch(error => {
+          // Display an error message if the fetch fails
+          document.getElementById('response').innerText = 'Error: ' + error;
+        });
+    });
+  </script>
+</body>
+</html>
